@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/packages/Castle.Core.4.2.1
+/packages
+/TaskMagic/bin/Debug
+/TaskMagic/obj/Debug
+/.vs/MultiThreaded/v15
+/MultiThreaded/bin/Debug
+/MultiThreaded/obj/Debug
