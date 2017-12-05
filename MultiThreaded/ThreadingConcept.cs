@@ -49,7 +49,10 @@ namespace MultiThreaded
     {
       return Task.Run(() => Task.CurrentId);
     }
-    
+    [Test]
+    public async Task TestExample() { }
+
+
     [Test]
     public async Task GetResultFromTask()
     {
@@ -72,9 +75,11 @@ namespace MultiThreaded
       await Task.Run(() => PartOfBad());
     }
 
-    public async Task PartOfBad()
+    public Task PartOfBad()
     {
-      await Task.Run(async () => await Task.Delay(5000));
+      return Task.Run(async () => await Task.Delay(5000));
     }
+
+
   }
 }
