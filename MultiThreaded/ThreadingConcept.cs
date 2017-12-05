@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
@@ -26,7 +23,7 @@ namespace MultiThreaded
       for (int i = 0; i < 10; i++)
       {
         var i1 = i;
-        tasks[i] = Task.Run(() =>DoSomeWork(i1));
+        tasks[i] = Task.Run(() => DoSomeWork(i1));
       }
       Task.WaitAll(tasks);
     }
@@ -45,21 +42,20 @@ namespace MultiThreaded
       task.Wait();
       var value = task.Result;
       Console.WriteLine(value);
-      Assert.That(value, Is.Not.Zero);
+      Assert.That(value, Is.Not.EqualTo(Task.CurrentId));
     }
 
     public Task<int?> TaskThatHasResultWithOutAsync()
     {
       return Task.Run(() => Task.CurrentId);
     }
-
-
+    
     [Test]
     public async Task GetResultFromTask()
     {
       var value = await TaskThatHasResult();
       Console.WriteLine(value);
-      Assert.That(value, Is.Not.Zero);
+      Assert.That(value, Is.Not.EqualTo(Task.CurrentId));
     }
 
     public async Task<int> TaskThatHasResult()
@@ -72,6 +68,7 @@ namespace MultiThreaded
     public async Task DontDoThis()
     {
       //this will not wait for 5 seconds. Why?
+      //what do we do to fix this?
       await Task.Run(() => PartOfBad());
     }
 

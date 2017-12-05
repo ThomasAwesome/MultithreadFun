@@ -15,7 +15,7 @@ namespace MultiThreaded
   {
     public async Task<string> Show()
     {
-      return await Task.FromResult("look here");
+      return await Task.Run(() => "look here");
     }
   }
 
@@ -23,7 +23,7 @@ namespace MultiThreaded
   {
     public Task<string> Show()
     {
-      return new Task<string>(() => "look here");
+      return Task.Run(() => "look at me");
     }
   }
 }
