@@ -54,7 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CodeProblems.cs" />
+    <Compile Include="DeadLockExample.cs" />
     <Compile Include="ImplmenationDetail.cs" />
+    <Compile Include="NotThreadSafeCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThreadingConcept.cs" />
   </ItemGroup>

@@ -35,6 +35,28 @@ namespace MultiThreaded
     }
 
     [Test]
+    public void MoreLockingIssues()
+    {
+      //how to protect the data and stop an exception from being raised
+      var collection = new NotThreadSafeCollection();
+      for (int i = 0; i < 100; i++)
+      {
+        collection.Add(i);
+      }
+      Task.Run(() =>
+        {
+          for (int i = 0; i < 100; i++)
+          {
+            collection.Add(i);
+          }
+        });
+      foreach (var value in collection.Values)
+      {
+        Console.WriteLine(value);
+      }
+    }
+
+    [Test]
     public async Task CreateMethodThatReturnsATaskWithValue()
     {
       //Create a method that a returns a Task<int> or whatever value you want. call the method

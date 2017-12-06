@@ -56,14 +56,14 @@ namespace MultiThreaded
     [Test]
     public async Task GetResultFromTask()
     {
-      var value = await TaskThatHasResult();
+      int value = await TaskThatHasResult();
       Console.WriteLine(value);
       Assert.That(value, Is.Not.EqualTo(Task.CurrentId));
     }
 
     public async Task<int> TaskThatHasResult()
     {
-      var value = await Task.Run(() => Task.CurrentId);
+      int? value = await Task.Run(() => Task.CurrentId);
       return value.GetValueOrDefault();
     }
 

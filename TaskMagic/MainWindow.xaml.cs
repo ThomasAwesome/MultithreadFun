@@ -27,15 +27,15 @@ namespace TaskMagic
       doCoolStuff = new DoCoolStuff();
     }
 
-    private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+    private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
     {
       OutText.Inlines.Add("Authenicating to a service");
-      doCoolStuff.Authenicate();
+      await doCoolStuff.Authenicate();
 
-      OutText.Inlines.Add("Making request to service");
-      var text = doCoolStuff.MakeRequestForData();
+      OutText.Inlines.Add("\n\rMaking request to service");
+      var text = await doCoolStuff.MakeRequestForData();
 
-      OutText.Inlines.Add("Done with stuff");
+      OutText.Inlines.Add("\n\rDone with stuff");
     }
   }
 }

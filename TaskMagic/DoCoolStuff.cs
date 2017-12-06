@@ -11,13 +11,15 @@ namespace TaskMagic
   {
     private HttpClient client = new HttpClient();
 
-    public void Authenicate() { Task.Delay(5000).Wait(); }
-
-    public string MakeRequestForData()
+    public async Task Authenicate()
     {
-      Task.Delay(2000).Wait();
-      var text = client.GetStringAsync("https://www.google.com").Result;
-      return text;
+      await Task.Delay(5000);
+    }
+
+    public async Task<string> MakeRequestForData()
+    {
+      await Task.Delay(2000);
+      return await client.GetStringAsync("https://www.google.com");
     }
   }
 }
