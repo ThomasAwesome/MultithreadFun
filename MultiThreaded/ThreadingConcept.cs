@@ -17,14 +17,14 @@ namespace MultiThreaded
         }
 
         [Test]
-        public void RunSomeThreads()
+        public async Task RunSomeThreads()
         {
             Task[] tasks = new Task[10];
             for (int i = 0; i < 10; i++)
             {
                 tasks[i] = Task.Run(() => DoSomeWork());
             }
-            Task.WaitAll(tasks);
+            await Task.WhenAll(tasks);
         }
 
         [Test]
@@ -73,10 +73,14 @@ namespace MultiThreaded
         {
             //this will not wait for 5 seconds. Why?
             //what do we do to fix this?
-            await Task.Run(() => PartOfBad());
+            await Task.Run(async() =>
+            {
+                DelayForFiveSeconds();
+                return 1;
+            });
         }
 
-        public Task PartOfBad()
+        public Task DelayForFiveSeconds()
         {
             return Task.Delay(5000);
         }

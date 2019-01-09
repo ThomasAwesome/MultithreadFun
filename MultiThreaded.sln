@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiThreaded", "MultiThreaded\MultiThreaded.csproj", "{C0B55FE1-279E-4E1E-B419-CBD6023E66AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiThreaded", "MultiThreaded\MultiThreaded.csproj", "{C0B55FE1-279E-4E1E-B419-CBD6023E66AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContextExamples", "ContextExamples\ContextExamples.csproj", "{37CBAEB6-27BC-462B-AFB8-155741EBC465}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C0B55FE1-279E-4E1E-B419-CBD6023E66AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0B55FE1-279E-4E1E-B419-CBD6023E66AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0B55FE1-279E-4E1E-B419-CBD6023E66AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37CBAEB6-27BC-462B-AFB8-155741EBC465}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37CBAEB6-27BC-462B-AFB8-155741EBC465}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37CBAEB6-27BC-462B-AFB8-155741EBC465}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37CBAEB6-27BC-462B-AFB8-155741EBC465}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -18,3 +18,7 @@ MultiThreaded/obj/MultiThreaded.csproj.nuget.g.props
 MultiThreaded/obj/MultiThreaded.csproj.nuget.cache
 MultiThreaded/obj/MultiThreaded.csproj.nuget.g.targets
 MultiThreaded/obj/project.assets.json
+/ContextExamples/obj
+/ContextExamples/bin/Debug
+/.vs
+/MultiThreaded/obj/Release/netcoreapp2.1
