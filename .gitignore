@@ -9,3 +9,12 @@
 /.vs/MultiThreaded/v15
 /MultiThreaded/bin/Debug
 /MultiThreaded/obj/Debug
+.vs/MultiThreaded/xs/sqlite3/storage.ide-wal
+.vs/MultiThreaded/xs/UserPrefs.xml
+.vs/MultiThreaded/xs/sqlite3/db.lock
+.vs/MultiThreaded/xs/sqlite3/storage.ide
+.vs/MultiThreaded/xs/sqlite3/storage.ide-shm
+MultiThreaded/obj/MultiThreaded.csproj.nuget.g.props
+MultiThreaded/obj/MultiThreaded.csproj.nuget.cache
+MultiThreaded/obj/MultiThreaded.csproj.nuget.g.targets
+MultiThreaded/obj/project.assets.json
