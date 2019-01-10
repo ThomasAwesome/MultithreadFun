@@ -3,23 +3,23 @@
 namespace MultiThreaded
 {
     public interface IShowStuff
-  {
-    Task<string> Show();
-  }
-
-  public class ImplmenationDetail : IShowStuff
-  {
-    public async Task<string> Show()
     {
-      return await Task.Run(() => "look here");
+        Task<string> Show();
     }
-  }
 
-  public class OrDetail : IShowStuff
-  {
-    public Task<string> Show()
+    public class ImplmenationDetail : IShowStuff
     {
-      return Task.Run(() => "look at me");
+        public async Task<string> Show()
+        {
+            return await Task.Run(() => "look here");
+        }
     }
-  }
+
+    public class OrDetail : IShowStuff
+    {
+        public Task<string> Show()
+        {
+            return Task.Run(() => "look at me");
+        }
+    }
 }
