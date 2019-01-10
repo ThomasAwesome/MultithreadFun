@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net.Http;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace ContextExamples
@@ -13,7 +12,7 @@ namespace ContextExamples
         {
             Console.WriteLine(Task.CurrentId);
 
-            await Task.Delay(TimeSpan.FromSeconds(5)).ConfigureAwait(false);
+            await Task.Delay(TimeSpan.FromSeconds(3)).ConfigureAwait(false);
 
             Console.WriteLine(Task.CurrentId);
 

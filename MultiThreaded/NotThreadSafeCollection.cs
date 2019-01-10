@@ -2,20 +2,20 @@
 
 namespace MultiThreaded
 {
-  public class NotThreadSafeCollection
-  {
-    public NotThreadSafeCollection()
+    public class NotThreadSafeCollection
     {
-      Values = new List<int>();
+        public NotThreadSafeCollection()
+        {
+            Values = new List<int>();
+        }
+
+        public List<int> Values { get; }
+
+        public void Add(int value)
+        {
+            Values.Add(value);
+        }
+
+        public void Remove(int value) { Values.Remove(value); }
     }
-
-    public List<int> Values { get; }
-
-    public void Add(int value)
-    {
-      Values.Add(value);
-    }
-
-    public void Remove(int value) { Values.Remove(value); }
-  }
 }

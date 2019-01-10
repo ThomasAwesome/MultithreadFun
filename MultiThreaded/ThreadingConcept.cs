@@ -19,8 +19,9 @@ namespace MultiThreaded
         [Test]
         public async Task RunSomeThreads()
         {
-            Task[] tasks = new Task[10];
-            for (int i = 0; i < 10; i++)
+            var threadCount = 10;
+            Task[] tasks = new Task[threadCount];
+            for (int i = 0; i < threadCount; i++)
             {
                 tasks[i] = Task.Run(() => DoSomeWork());
             }
@@ -49,10 +50,6 @@ namespace MultiThreaded
         {
             return Task.Run(() => Task.CurrentId);
         }
-
-        [Test]
-        public async Task TestExample() { }
-
 
         [Test]
         public async Task GetResultFromTask()

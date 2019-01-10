@@ -13,7 +13,7 @@ namespace ContextExamples
         {
             Console.WriteLine(Thread.CurrentContext.ContextID);
 
-            await Task.Delay(TimeSpan.FromSeconds(5));
+            await Task.Delay(TimeSpan.FromSeconds(3));
 
             Console.WriteLine(Thread.CurrentContext.ContextID);
 
