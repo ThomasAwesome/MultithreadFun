@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
 
@@ -19,7 +18,7 @@ namespace MultiThreaded
         [Test]
         public async Task RunSomeThreads()
         {
-            var threadCount = 10;
+            var threadCount = 30;
             Task[] tasks = new Task[threadCount];
             for (int i = 0; i < threadCount; i++)
             {
@@ -27,26 +26,17 @@ namespace MultiThreaded
             }
             await Task.WhenAll(tasks);
         }
-
-        [Test]
-        public void GetMaxThreads()
-        {
-            ThreadPool.GetMaxThreads(out int maxThreads, out int completionPort);
-            Console.WriteLine($"{maxThreads}");
-        }
-
+        
         [Test]
         public void GetResultFromTaskWithoutAsync()
         {
-
-            var task = TaskThatHasResultWithOutAsync();
-            task.Wait();
+            var task = TaskThatReturnsTheTaskId();
             var value = task.Result;
             Console.WriteLine(value);
             Assert.That(value, Is.Not.EqualTo(Task.CurrentId));
         }
 
-        public Task<int?> TaskThatHasResultWithOutAsync()
+        public Task<int?> TaskThatReturnsTheTaskId()
         {
             return Task.Run(() => Task.CurrentId);
         }
@@ -54,15 +44,9 @@ namespace MultiThreaded
         [Test]
         public async Task GetResultFromTask()
         {
-            int value = await TaskThatHasResult();
+            int? value = await TaskThatReturnsTheTaskId();
             Console.WriteLine(value);
             Assert.That(value, Is.Not.EqualTo(Task.CurrentId));
-        }
-
-        public async Task<int> TaskThatHasResult()
-        {
-            int? value = await Task.Run(() => Task.CurrentId);
-            return value.GetValueOrDefault();
         }
 
         [Test]
