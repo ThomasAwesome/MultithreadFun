@@ -1,32 +1,56 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace MultiThreaded
 {
+    [TestFixture]
     public class SemaphoreExample
     {
         private SemaphoreSlim semaphore;
+        private List<string> responses;
+        private List<Task> tasks;
 
-        public SemaphoreExample()
+        [SetUp]
+        public void SemaphoreExampleSetup()
         {
-            semaphore = new SemaphoreSlim(0, 5);
+            semaphore = new SemaphoreSlim(1, 1);
+            responses = new List<string>();
+            tasks = new List<Task>();
         }
 
-        public async Task<HttpResponseMessage> ShowSemaphoreUse()
+        [Test]
+        public async Task ShowSemaphoreUse()
         {
-            await semaphore.WaitAsync();
+            var timesToIterate = 5;
 
-            try
+            for (var i = 0; i < timesToIterate; i++)
             {
-                Console.WriteLine("I made it pass the semaphore block.");
-                return await new HttpClient().GetAsync("https://www.google.com");
+                var task = Task.Run(async () =>
+                {
+                    await semaphore.WaitAsync();
+
+                    try
+                    {
+                        Console.WriteLine("I made it pass the semaphore block.");
+                        var respnose = await new HttpClient().GetAsync("https://www.google.com");
+                        responses.Add(await respnose.Content.ReadAsStringAsync());
+                    }
+                    finally
+                    {
+                        semaphore.Release();
+                    }
+                });
+                tasks.Add(task);
             }
-            finally
-            {
-                semaphore.Release();
-            }
+
+            await Task.WhenAll(tasks);
+
+
+            Assert.That(responses.Count, Is.EqualTo(timesToIterate));
         }
     }
 }
